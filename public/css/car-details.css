@@ -145,9 +145,11 @@ nav a {
 
 /* Responsive styles for stacking cards vertically */
 @media (max-width: 768px) {
+
     .details-container {
         flex-direction: column; /* Stack items vertically on smaller screens */
         align-items: center; /* Center content horizontally */
+        padding-top:75px;
     }
 
     .card, .details-info {
