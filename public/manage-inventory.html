@@ -13,6 +13,14 @@
 <!-- Navbar -->
 <header>
     <nav>
+        <!-- Logo Section -->
+        <div class="nav-logo">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Dago Classics Logo" class="logo" id="navbar-logo">
+            </a>
+        </div>
+
+        <!-- Links Section -->
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="inventory.html">Inventory</a>
@@ -74,20 +82,20 @@
 <!-- Edit Car Overlay -->
 <div id="edit-car-overlay" class="overlay">
     <div class="card large-card">
-        <form id="edit-car-form" onsubmit="submitEditCar(); return false;">
+        <form id="edit-car-form">
             <h2>Edit Car</h2>
             <input type="hidden" id="edit-car-id">
-            <input type="text" name="edit-make" placeholder="Make" required>
-            <input type="text" name="edit-model" placeholder="Model" required>
-            <input type="text" name="edit-vin" placeholder="VIN" required>
+            <input type="text" id="edit-make" name="edit-make" placeholder="Make" required>
+            <input type="text" id="edit-model" name="edit-model" placeholder="Model" required>
+            <input type="text" id="vin" name="edit-vin" placeholder="VIN" required>
             <textarea id="edit-description" placeholder="Description" required></textarea>
             <input type="number" id="edit-miles" placeholder="Miles" required>
             <input type="number" step="0.01" id="edit-price" placeholder="Price" required>
             <input type="text" id="edit-engine" placeholder="Engine" required>
             <input type="text" id="edit-transmission" placeholder="Transmission" required>
-            <input type="text" name="edit-drivetrain" placeholder="Drivetrain" required>
-            <input type="text" name="edit-suspension" placeholder="Suspension" required>
-            <input type="text" name="edit-interior" placeholder="Interior" required>
+            <input type="text" id="edit-drivetrain" placeholder="Drivetrain" required>
+            <input type="text" id="edit-suspension" placeholder="Suspension" required>
+            <input type="text" id="edit-interior" placeholder="Interior" required>
             <input type="number" id="edit-year" placeholder="Year" required>
             <input type="text" id="edit-color" placeholder="Color" required>
             <button type="submit" class="button">Save Changes</button>
@@ -96,8 +104,9 @@
     </div>
 </div>
 
+<script src="./scripts/navbar.js"></script>
 <footer>
-    <p>&copy; 2024 Daygo Classics. All rights reserved.</p>
+    <p>&copy; 2024 Dago Classics. All rights reserved.</p>
 </footer>
 
 <script src="./scripts/manage-inventory.js"></script>

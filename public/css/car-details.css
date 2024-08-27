@@ -12,6 +12,9 @@ header {
     text-align: center;
 }
 
+main{
+    margin-top: 100px;
+}
 nav {
     display: flex;
     align-items: center;

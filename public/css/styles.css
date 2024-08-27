@@ -1,3 +1,4 @@
+/* Resetting styles and setting defaults */
 body, h1, h2, h3, p, a {
     margin: 0;
     padding: 0;
@@ -6,53 +7,113 @@ body, h1, h2, h3, p, a {
     color: #333;
 }
 
+/* Apply Ironwood font to all h1 headers */
+h1 {
+    font-family: "ironwood-std", sans-serif; /* Fallback to Arial and sans-serif */
+    font-size: 150px !important;
+    font-weight: 100 !important;
+    font-stretch: 150% !important;
+}
+
+/* Navbar styles */
 header {
     background-color: #333;
     color: #fff;
     padding: 15px;
     text-align: center;
-    position: sticky;
+    position: fixed;
+    width: 100%;
     top: 0;
     z-index: 1000;
+    transition: padding 0.3s ease; /* Smooth transition for padding change */
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.nav-logo img {
+    width: 100%; /* Make sure the image scales proportionally */
+    max-width: 100px;
+    max-height: 100px; /* Maximum height for the logo */
+    transition: max-height 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+/* Updated nav-links to stay centered */
+.nav-links {
+    display: flex;
+    justify-content: center;
+    flex: 1; /* Allow nav-links section to grow and take up remaining space equally */
 }
 
 nav a {
     color: #fff;
-    margin: 0 15px;
+    margin: 0 30px;
     font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+nav a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width 0.3s ease; /* Smooth transition for hover effect */
+    margin: 0px auto;
+}
+
+nav a:hover::after {
+    width: 100%;
 }
 
 #profile-container {
     display: flex;
     align-items: center;
-}
-
-#profile-link {
-    text-decoration: none;
+    flex-shrink: 0;
 }
 
 #profile-icon {
-    font-size: 30px;
-    border-radius: 50%;
+    font-size: 60px;
+    transition: font-size 0.3s ease; /* Smooth transition for icon size */
 }
 
+/* Shrinking styles when scrolling */
+header.shrink {
+    padding: 5px; /* Reduce padding when shrunk */
+}
+
+.nav-logo img.shrink {
+    max-height: 50px; /* Reduced height for logo when shrunk */
+    max-width: 50px;
+}
+
+#profile-icon.shrink {
+    font-size: 30px; /* Shrink profile icon */
+}
+
+/* Main content and Hero Section styles */
 main {
     text-align: center;
     padding: 0;
+    padding-top: 100px;
     padding-bottom: 50px;
     min-height: calc(100vh - 50px);
     box-sizing: border-box;
     background-color: ivory;
 }
 
-/* Hero Section */
 .hero {
     position: relative;
     background-image: url('../images/hero.jpg');
@@ -60,17 +121,14 @@ main {
     background-position: center;
     color: #fff;
     height: 100vh;
-    width: 100%;
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    z-index: 1; /* Ensure hero section has a lower z-index than its contents */
 }
 
-/* Overlay to improve text readability */
 .hero::before {
     content: "";
     position: absolute;
@@ -79,8 +137,9 @@ main {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+    z-index: 0; /* Lower z-index to ensure it doesn't block the button */
 }
+
 
 .hero h1,
 .hero p {
@@ -110,15 +169,14 @@ main {
     text-transform: uppercase;
     border-radius: 5px;
     transition: background-color 0.3s;
-    position: relative;
-    z-index: 2;
+    z-index: 2; /* Ensure button is above any overlays */
 }
 
 .btn:hover {
     background-color: #c03;
 }
 
-/* Services and Map Section */
+/* Services and Map Section styles */
 .services-map {
     display: flex;
     gap: 20px;
@@ -132,15 +190,15 @@ main {
 
 .services-column {
     flex: 1;
-    display: grid; /* Use grid layout for services */
-    grid-template-columns: repeat(2, 1fr); /* Two columns grid */
-    gap: 30px; /* Space between the grid items */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
 }
 
 .service-card {
     background-color: #fff;
-    width: 95%; /* Ensure full width in grid */
-    height: 190px; /* Set height to make it square */
+    width: 95%;
+    height: 190px;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
@@ -176,18 +234,17 @@ main {
 }
 
 footer {
-    background-color: #333 !important;
-    color: #fff !important;
+    background-color: #333;
+    color: #fff;
     text-align: center;
     padding: 20px 0;
-    width: 100%;
-    margin-top: 0;
 }
 
 footer p {
-    color: #fff !important;
+    color: #fff;
 }
 
+/* Responsive styles */
 @media (max-width: 768px) {
     .hero {
         height: 100vh;
@@ -195,18 +252,18 @@ footer p {
     }
 
     .services-map {
-        flex-direction: column; /* Stack columns vertically on smaller screens */
+        flex-direction: column;
     }
 
     .services-column {
-        grid-template-columns: 1fr; /* Change grid to single column */
+        grid-template-columns: 1fr;
         align-items: center;
         justify-items: center;
     }
 
     .service-card {
         width: 80%;
-        height: auto; /* Adjust height for responsiveness */
+        height: auto;
     }
 
     .features {

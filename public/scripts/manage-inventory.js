@@ -37,6 +37,42 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Add event listener for edit car form submission
+    const editForm = document.getElementById('edit-car-form');
+    editForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const formData = new FormData(editForm);
+        const carVin = document.getElementById('edit-car-id').value;
+
+        try {
+            const response = await fetch(`/api/cars/${carVin}`, {
+                method: 'PUT', // Use PUT method for updating
+                body: formData,
+            });
+
+            if (response.ok) {
+                feedbackMessage.style.display = 'block';
+                feedbackMessage.textContent = 'Car details updated successfully!';
+                feedbackMessage.classList.remove('error');
+                setTimeout(() => feedbackMessage.style.display = 'none', 3000);
+                loadInventory(); // Reload inventory to show the updated car
+                hideEditCarOverlay();
+            } else {
+                const errorData = await response.json();
+                feedbackMessage.style.display = 'block';
+                feedbackMessage.textContent = errorData.error || 'Failed to update car details.';
+                feedbackMessage.classList.add('error');
+                setTimeout(() => feedbackMessage.style.display = 'none', 3000);
+            }
+        } catch (error) {
+            console.error('Error updating car details:', error);
+            feedbackMessage.style.display = 'block';
+            feedbackMessage.textContent = 'Error updating car. Please try again.';
+            feedbackMessage.classList.add('error');
+            setTimeout(() => feedbackMessage.style.display = 'none', 3000);
+        }
+    });
+
     // Function to load the current inventory
     const loadInventory = async () => {
         const inventoryContainer = document.getElementById('current-inventory');
@@ -47,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         addCard.className = 'add-card';
         addCard.onclick = showAddCarOverlay;
         addCard.innerHTML = `
-            <div class="card-content">
+            <div class="add-card-content">
                 <i class="fas fa-plus-circle fa-3x"></i>
                 <p>Add New Car</p>
             </div>
@@ -65,13 +101,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     <img src="${imageUrl}" alt="${car.make} ${car.model}" class="car-image">
                     <div class="card-content">
                         <h3>${car.make} ${car.model}</h3>
+                        <p>VIN: ${car.vin}</p>
                         <p>Year: ${car.year}</p>
                         <p>Miles: ${car.miles.toLocaleString()}</p>
                         <p>Price: $${car.price.toLocaleString()}</p>
                     </div>
                     <div class="card-buttons">
-                        <button class="button edit-button" onclick="openEditModal(${car.id})">Edit</button>
-                        <button class="button delete-button" onclick="deleteCar(${car.id})">Delete</button>
+                        <button class="button edit-button" onclick="openEditModal('${car.vin}')">Edit</button>
+                        <button class="button delete-button" onclick="deleteCar('${car.vin}')">Delete</button>
                     </div>
                 `;
                 inventoryContainer.appendChild(carItem);
@@ -81,11 +118,10 @@ document.addEventListener('DOMContentLoaded', () => {
             inventoryContainer.innerHTML = '<p>Error loading inventory.</p>';
         }
     };
-
     // Function to delete a car
-    window.deleteCar = async (carId) => {
+    window.deleteCar = async (carVin) => {
         try {
-            const response = await fetch(`/api/cars/${carId}`, {
+            const response = await fetch(`/api/cars/${carVin}`, {
                 method: 'DELETE',
             });
 
@@ -101,8 +137,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Function to open the edit modal with car details
-    window.openEditModal = (carId) => {
-        fetch(`/api/cars/${carId}`)
+    window.openEditModal = (carVin) => {
+        console.log('Edit button clicked for VIN:', carVin); // Debugging line
+        fetch(`/api/cars/${carVin}`)
             .then(response => response.json())
             .then(car => {
                 document.getElementById('edit-make').value = car.make;
@@ -113,12 +150,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('edit-price').value = car.price;
                 document.getElementById('edit-engine').value = car.engine;
                 document.getElementById('edit-transmission').value = car.transmission;
-                document.getElementById('edit-drivetrain').value = car.transmission;
-                document.getElementById('edit-suspension').value = car.transmission;
-                document.getElementById('edit-interior').value = car.transmission;
+                document.getElementById('edit-drivetrain').value = car.drivetrain;
+                document.getElementById('edit-suspension').value = car.suspension;
+                document.getElementById('edit-interior').value = car.interior;
                 document.getElementById('edit-year').value = car.year;
                 document.getElementById('edit-color').value = car.color;
-                document.getElementById('edit-car-id').value = car.id;
+                document.getElementById('edit-car-id').value = car.vin;
                 showEditCarOverlay();
             })
             .catch(error => console.error('Error fetching car details:', error));
@@ -141,6 +178,5 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('edit-car-overlay').classList.remove('active');
     };
 
-    // Load the inventory on page load
-    loadInventory();
+    loadInventory()
 });

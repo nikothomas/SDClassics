@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daygo Classics</title>
+    <title>Dago Classics</title>
+    <link rel="stylesheet" href="https://use.typekit.net/xby3uvt.css">
     <link rel="stylesheet" href="./css/styles.css">
     <!-- Font Awesome CDN for icons -->
     <script src="https://kit.fontawesome.com/792066fd94.js" crossorigin="anonymous"></script>
@@ -14,11 +15,19 @@
 <!-- Navbar -->
 <header>
     <nav>
+        <!-- Logo Section -->
+        <div class="nav-logo">
+            <a href="index.html">
+                <img src="./images/logo.png" alt="Dago Classics Logo" id="navbar-logo">
+            </a>
+        </div>
+        <!-- Links Section -->
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="inventory.html">Inventory</a>
             <a href="contact-us.html">Contact</a>
         </div>
+        <!-- Profile Section -->
         <div id="profile-container">
             <a href="/profile" id="profile-link">
                 <i id="profile-icon" class="fas fa-user-circle"></i>
@@ -30,7 +39,7 @@
 <!-- Hero Section -->
 <main>
     <section class="hero">
-        <h1>Daygo Classics</h1>
+        <h1>Dago Classics</h1>
         <p>Your destination for premium classic cars</p>
         <a href="inventory.html" class="btn">Explore Our Inventory</a>
     </section>
@@ -45,25 +54,21 @@
 
         <!-- Services Column -->
         <div class="services-column">
-            <!-- Service Card 1 - Car Sales links to Inventory Page -->
             <a href="inventory.html" class="service-card">
                 <i class="fas fa-car"></i>
                 <h3>Car Sales</h3>
                 <p>We offer a wide variety of classic cars in pristine condition.</p>
             </a>
-            <!-- Service Card 2 - Car Restoration links to Contact Us with autofill -->
             <a href="contact-us.html?service=car-restoration" class="service-card">
                 <i class="fas fa-tools"></i>
                 <h3>Car Restoration</h3>
                 <p>Expert restoration services to bring your classic car back to life.</p>
             </a>
-            <!-- Service Card 3 - Worldwide Shipping links to Contact Us with autofill -->
             <a href="contact-us.html?service=worldwide-shipping" class="service-card">
                 <i class="fas fa-shipping-fast"></i>
                 <h3>Worldwide Shipping</h3>
                 <p>Reliable shipping services to deliver your car anywhere in the world.</p>
             </a>
-            <!-- Service Card 4 - Financing Options links to Contact Us with autofill -->
             <a href="contact-us.html?service=financing-options" class="service-card">
                 <i class="fas fa-money-check-alt"></i>
                 <h3>Financing Options</h3>
@@ -73,9 +78,12 @@
     </section>
 </main>
 
+<!-- JavaScript for Navbar -->
+<script src="./scripts/navbar.js"></script>
+
 <!-- Footer -->
 <footer>
-    <p>&copy; 2024 Daygo Classics. All rights reserved.</p>
+    <p>&copy; 2024 Dago Classics. All rights reserved.</p>
 </footer>
 
 </body>

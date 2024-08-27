@@ -4,7 +4,9 @@ h2.title {
     font-size: 24px;
     color: #333;
 }
-
+#inventory-management{
+    margin-top: 50px;
+}
 .card-container {
     display: flex;
     flex-wrap: wrap;
