@@ -393,12 +393,6 @@ app.get('/admin', claimEquals('isAdmin', true), (req, res) => {
     res.sendFile(path.join(__dirname, '../public/admin.html'));
 });
 
-// Load SSL certificate and key
-const sslOptions = {
-    key: fs.readFileSync(path.join(__dirname, 'key.pem')),
-    cert: fs.readFileSync(path.join(__dirname, 'cert.pem')),
-};
-
 // Start the HTTP server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
