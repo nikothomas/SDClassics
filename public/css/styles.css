@@ -9,10 +9,10 @@ body, h1, h2, h3, p, a {
 
 /* Apply Ironwood font to all h1 headers */
 h1 {
-    font-family: "ironwood-std", sans-serif; /* Fallback to Arial and sans-serif */
-    font-size: 150px !important;
-    font-weight: 100 !important;
-    font-stretch: 150% !important;
+    font-family: "ironwood-std", sans-serif;
+    font-size: 100px; /* Adjusted for better mobile view */
+    font-weight: 100;
+    font-stretch: 150%;
 }
 
 /* Navbar styles */
@@ -25,13 +25,14 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
-    transition: padding 0.3s ease; /* Smooth transition for padding change */
+    transition: padding 0.3s ease;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 .nav-logo {
@@ -41,27 +42,27 @@ nav {
 }
 
 .nav-logo img {
-    width: 100%; /* Make sure the image scales proportionally */
+    width: 100%;
     max-width: 100px;
-    max-height: 100px; /* Maximum height for the logo */
-    transition: max-height 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    max-height: 100px;
+    transition: max-height 0.3s ease, transform 0.3s ease;
 }
 
-/* Updated nav-links to stay centered */
 .nav-links {
     display: flex;
-    justify-content: center;
-    flex: 1; /* Allow nav-links section to grow and take up remaining space equally */
+    justify-content: space-evenly;
+    flex: 1;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 nav a {
     color: #fff;
-    margin: 0 30px;
-    font-size: 18px;
+    margin: 0 15px; /* Reduced margin for better fit on small screens */
+    font-size: 16px; /* Slightly smaller font size for mobile */
     text-transform: uppercase;
     font-weight: 500;
     position: relative;
-    transition: color 0.3s ease; /* Smooth transition for hover effect */
+    transition: color 0.3s ease;
 }
 
 nav a::after {
@@ -70,8 +71,8 @@ nav a::after {
     width: 0;
     height: 2px;
     background: #fff;
-    transition: width 0.3s ease; /* Smooth transition for hover effect */
-    margin: 0px auto;
+    transition: width 0.3s ease;
+    margin: 0 auto;
 }
 
 nav a:hover::after {
@@ -81,26 +82,32 @@ nav a:hover::after {
 #profile-container {
     display: flex;
     align-items: center;
-    flex-shrink: 0;
+    width: 100px;
+    flex-shrink: 1;
 }
 
 #profile-icon {
-    font-size: 60px;
-    transition: font-size 0.3s ease; /* Smooth transition for icon size */
+    font-size: 40px; /* Reduced size for better mobile fit */
+    transition: font-size 0.3s ease;
 }
 
 /* Shrinking styles when scrolling */
 header.shrink {
-    padding: 5px; /* Reduce padding when shrunk */
+    padding: 5px;
 }
 
 .nav-logo img.shrink {
-    max-height: 50px; /* Reduced height for logo when shrunk */
+    max-height: 50px;
     max-width: 50px;
 }
 
-#profile-icon.shrink {
-    font-size: 30px; /* Shrink profile icon */
+#profile-container.shrink{
+    width:50px;
+    height:50px;
+}
+
+#profile-icon.shrink{
+    font-size: 30px;
 }
 
 /* Main content and Hero Section styles */
@@ -126,7 +133,7 @@ main {
     justify-content: center;
     align-items: center;
     text-align: center;
-    z-index: 1; /* Ensure hero section has a lower z-index than its contents */
+    z-index: 1;
 }
 
 .hero::before {
@@ -137,9 +144,8 @@ main {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 0; /* Lower z-index to ensure it doesn't block the button */
+    z-index: 0;
 }
-
 
 .hero h1,
 .hero p {
@@ -148,14 +154,14 @@ main {
 }
 
 .hero h1 {
-    font-size: 70px;
+    font-size: 50px; /* Smaller font size for mobile */
     margin-bottom: 20px;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .hero p {
-    font-size: 30px;
+    font-size: 24px; /* Smaller font size for mobile */
     margin-bottom: 30px;
     color: #fff;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
@@ -165,11 +171,11 @@ main {
     display: inline-block;
     background-color: #f04;
     color: #fff;
-    padding: 15px 30px;
+    padding: 10px 20px; /* Adjusted padding for better fit */
     text-transform: uppercase;
     border-radius: 5px;
     transition: background-color 0.3s;
-    z-index: 2; /* Ensure button is above any overlays */
+    z-index: 2;
 }
 
 .btn:hover {
@@ -180,25 +186,26 @@ main {
 .services-map {
     display: flex;
     gap: 20px;
-    padding: 50px 20px;
+    padding: 30px 10px; /* Adjusted padding for better mobile fit */
+    flex-direction: column; /* Stack columns for mobile view */
 }
 
-.map-column {
+.map-column, .services-column {
     flex: 1;
     align-content: center;
+    width: 100%; /* Ensure full width on mobile */
 }
 
 .services-column {
-    flex: 1;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    grid-template-columns: 1fr; /* Single column for mobile */
+    gap: 20px;
 }
 
 .service-card {
     background-color: #fff;
-    width: 95%;
-    height: 190px;
+    width: 90%;
+    height: auto; /* Auto height for flexible content */
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
@@ -217,19 +224,19 @@ main {
 }
 
 .service-card i {
-    font-size: 24px;
+    font-size: 20px; /* Slightly smaller for mobile */
     color: #f04;
-    margin-bottom: 15px;
+    margin-bottom: 10px; /* Adjusted margin */
 }
 
 .service-card h3 {
     margin: 10px 0;
-    font-size: 20px;
+    font-size: 18px; /* Slightly smaller for mobile */
     color: #333;
 }
 
 .service-card p {
-    font-size: 16px;
+    font-size: 14px; /* Slightly smaller for mobile */
     color: #555;
 }
 
@@ -237,7 +244,7 @@ footer {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 20px 0;
+    padding: 15px 0; /* Reduced padding for better fit */
 }
 
 footer p {
@@ -247,31 +254,30 @@ footer p {
 /* Responsive styles */
 @media (max-width: 768px) {
     .hero {
-        height: 100vh;
-        padding: 0;
+        height: auto; /* Allow hero section to adjust to content */
+        padding: 100px; /* Added padding for better spacing */
     }
 
     .services-map {
-        flex-direction: column;
+        padding: 20px 10px;
     }
 
-    .services-column {
-        grid-template-columns: 1fr;
+    nav a {
+        margin: 5px 0; /* Stack navigation links vertically */
+        font-size: 14px; /* Smaller font size for compact display */
+    }
+
+    .nav-links {
+        flex-direction: column;
         align-items: center;
-        justify-items: center;
+    }
+
+    .btn {
+        padding: 10px 20px; /* Adjusted padding for mobile */
     }
 
     .service-card {
-        width: 80%;
-        height: auto;
-    }
-
-    .features {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .feature {
-        margin-bottom: 30px;
+        width: 100%;
+        margin-bottom: 20px; /* Added margin for better spacing */
     }
 }
