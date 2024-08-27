@@ -21,36 +21,6 @@ main {
     min-height: 90vh; /* Ensure minimum height to fill screen */
 }
 
-nav {
-    display: flex;
-    align-items: center;
-    background-color: #333;
-    color: #fff;
-    padding: 15px;
-}
-
-nav a {
-    color: #fff;
-    margin-right: 15px;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-#profile-container {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-}
-
-#profile-link {
-    text-decoration: none;
-}
-
-#profile-icon {
-    font-size: 30px;
-    border-radius: 50%;
-}
-
 .details-container {
     display: flex;
     flex-direction: row;
