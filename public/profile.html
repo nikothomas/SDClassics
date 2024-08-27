@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile - SD Classics</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/profile.css">
+  <script src="https://kit.fontawesome.com/792066fd94.js" crossorigin="anonymous"></script>
+  <script src="./scripts/profile.js"></script>
+</head>
+<body>
+<!-- Navbar -->
+<header>
+  <nav>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="inventory.html">Inventory</a>
+      <a href="contact-us.html">Contact</a>
+    </div>
+    <div id="profile-container">
+      <a href="/profile" id="profile-link">
+        <i id="profile-icon" class="fas fa-user-circle"></i>
+      </a>
+    </div>
+  </nav>
+</header>
+<main>
+  <!-- Profile Card Container for Horizontal Centering at the Top -->
+  <section class="profile-container">
+    <!-- Profile Card -->
+    <div id="profile-card">
+      <img id="profile-picture" src="" alt="Profile Picture" style="display:none;">
+      <div id="profile-info">
+        <p><strong>Name:</strong> <span id="profile-name"></span></p>
+        <p><strong>Email:</strong> <span id="profile-email"></span></p>
+      </div>
+      <button class="button" onclick="logout()">Logout</button>
+      <!-- Admin-only button -->
+      <button id="admin-button" class="button" onclick="goToManageInventory()" style="display:none;">Manage Inventory</button>
+    </div>
+
+    <!-- Contacts Card - Initially hidden -->
+    <div id="contacts-card" style="display:none;">
+      <h2>Inquires</h2>
+      <div id="contacts-list">
+        <!-- Contacts will be dynamically loaded here -->
+        <p>Loading contacts...</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>

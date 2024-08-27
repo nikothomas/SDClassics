@@ -1,0 +1,115 @@
+/* Contact Page Specific Styles */
+
+/* Phone Notice Styles */
+.phone-notice {
+    margin-bottom: 20px; /* Adds space below the phone notice */
+    padding: 20px; /* Adds padding inside the notice */
+    background-color: #ffefd5; /* Light peach color for the background */
+    border-left: 6px solid #f04; /* Accent border on the left side */
+    color: #333; /* Darker text color for contrast */
+    font-size: 16px; /* Matches the form text size */
+    width: 100%; /* Full width to match form width */
+    max-width: 600px; /* Align with the form width */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Matches the form's box shadow */
+    border-radius: 8px; /* Rounded corners for consistency */
+}
+
+.phone-notice p {
+    margin: 0; /* Remove default margin */
+    line-height: 1.5; /* Improves readability */
+}
+
+.phone-notice a {
+    color: #f04; /* Accent color for the link */
+    text-decoration: none; /* Remove underline for a clean look */
+    font-weight: bold; /* Bold text for emphasis */
+}
+
+.phone-notice a:hover {
+    text-decoration: underline; /* Underline on hover for clarity */
+}
+
+.contact-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    background-color: ivory;
+    min-height: calc(100vh - 130px); /* Adjust for header and footer height */
+}
+
+.contact-form {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    text-align: left;
+}
+
+.contact-form h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.contact-form p {
+    margin-bottom: 30px;
+    font-size: 16px;
+    color: #555;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #333;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    border-color: #f04;
+    outline: none;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #f04;
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 16px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #c03;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contact-page-container {
+        padding: 20px;
+    }
+
+    .contact-form {
+        padding: 20px;
+    }
+}

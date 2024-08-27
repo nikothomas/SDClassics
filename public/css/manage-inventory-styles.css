@@ -1,0 +1,225 @@
+h2.title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 60px; /* Margin at the bottom for spacing */
+}
+
+.card {
+    width: 300px; /* Standardized width */
+    height: 350px; /* Standardized height */
+    border-radius: 5px; /* Rounded corners for the card */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    overflow: hidden; /* Ensures content does not overflow */
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensure content and buttons are spaced out */
+    align-items: center; /* Center content horizontally */
+    cursor: pointer;
+    padding: 0px; /* Padding for content inside the card */
+    text-align: center;
+}
+
+/* Specific styling for add-card to center content */
+.add-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    width: 300px; /* Standardized width */
+    height: 350px; /* Standardized height */
+    border-radius: 5px; /* Rounded corners for the card */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    overflow: hidden; /* Ensures content does not overflow */
+    background-color: #fff;
+    cursor: pointer;
+    text-align: center;
+    padding: 0; /* Remove padding to fully center content */
+}
+
+/* Center content inside the add-card */
+.add-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ensure consistent styling for dynamic inventory cards */
+.card img {
+    width: 100%;
+    height: 150px; /* Fixed height for images */
+    object-fit: cover; /* Ensures images cover their area without distortion */
+    border-radius: 5px 5px 0 0; /* Rounded corners on the top of the image */
+}
+
+.card-content {
+    padding: 0px;
+    flex-grow: 0; /* Allow content to grow to fill space */
+    text-align: center;
+}
+
+.card-buttons {
+    display: flex;
+    justify-content: space-between; /* Space buttons apart */
+    padding: 10px;
+    border-top: 1px solid #ddd; /* Separate buttons from content with a border */
+}
+
+.button {
+    padding: 8px 12px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    flex: 1; /* Buttons take equal space */
+    margin: 0 5px; /* Margin between buttons */
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #555;
+}
+
+.overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.overlay .card {
+    z-index: 1001;
+    max-width: 90%; /* Max width for the overlay */
+    max-height: 90%; /* Max height for the overlay */
+    overflow-y: auto; /* Allow vertical scrolling if content overflows */
+    padding: 20px; /* Add some padding around the card content */
+}
+
+.overlay.active {
+    display: flex; /* Show overlay when active */
+}
+
+/* General form container styling */
+.card.large-card {
+    background-color: #f8f9fa; /* Light grey background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 600px; /* Limit width */
+    margin: auto; /* Center align the form */
+}
+
+/* Styling for form titles */
+.card.large-card h2 {
+    font-family: 'Arial', sans-serif; /* Make font consistent with the rest of the theme */
+    color: #333; /* Darker text color */
+    text-align: center; /* Center the title */
+    margin-bottom: 20px; /* Space below the title */
+}
+
+/* Styling for input fields and textareas */
+.card.large-card input[type="text"],
+.card.large-card input[type="number"],
+.card.large-card input[type="file"],
+.card.large-card textarea {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Consistent font size */
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+    transition: border-color 0.3s ease; /* Smooth transition on hover/focus */
+}
+
+/* Focus state for input fields */
+.card.large-card input[type="text"]:focus,
+.card.large-card input[type="number"]:focus,
+.card.large-card input[type="file"]:focus,
+.card.large-card textarea:focus {
+    border-color: #0056b3; /* Blue border on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Styling for buttons */
+.card.large-card .button {
+    background-color: #007bff; /* Blue background color */
+    color: #fff; /* White text */
+    padding: 10px 20px; /* Space around text */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Consistent font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-top: 10px; /* Space above the button */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+/* Hover state for buttons */
+.card.large-card .button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Styling for cancel buttons */
+.card.large-card .button.cancel-button {
+    background-color: #6c757d; /* Grey background color for cancel button */
+}
+
+.card.large-card .button.cancel-button:hover {
+    background-color: #5a6268; /* Darker grey on hover */
+}
+
+.feedback-message {
+    display: none; /* Initially hidden */
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.1em;
+    transition: all 0.3s ease-in-out;
+}
+
+.feedback-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    box-shadow: 0 0 10px rgba(0, 123, 0, 0.2);
+}
+
+.feedback-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+}
+
+.feedback-message.show {
+    display: block; /* Show message */
+    animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}

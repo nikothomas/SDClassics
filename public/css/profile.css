@@ -1,0 +1,123 @@
+/* Container to stack the profile card and contacts card vertically */
+.profile-container {
+    display: flex;
+    flex-direction: column; /* Stacks elements vertically */
+    align-items: center; /* Centers the cards horizontally */
+    padding: 25px;
+    gap: 25px; /* Adds space between the profile card and contacts card */
+}
+
+/* Profile card styling */
+#profile-card {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 90%;
+}
+
+/* Profile picture styling */
+#profile-picture {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+/* Profile info styling */
+#profile-info {
+    flex-grow: 1;
+}
+
+/* Profile info paragraph styling */
+#profile-info p {
+    margin: 5px 0;
+    color: #333;
+}
+
+/* Button styling */
+.button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-left: 10px; /* Adds spacing between buttons */
+}
+
+/* Button hover styling */
+.button:hover {
+    background-color: #555;
+}
+
+/* Admin button styling */
+#admin-button {
+    display: none; /* Hidden by default */
+}
+
+/* Contacts Card Styling */
+#contacts-card {
+    background-color: #fff; /* White background to match profile card */
+    padding: 20px; /* Consistent padding with profile card */
+    border-radius: 10px; /* Rounded corners to match profile card */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow to lift the card */
+    max-width: 600px; /* Align with profile card width */
+    width: 90%; /* Responsive width */
+}
+
+/* Contacts Card Styling */
+#contacts-card {
+    background-color: #fff; /* White background to match profile card */
+    padding: 20px; /* Consistent padding with profile card */
+    border-radius: 10px; /* Rounded corners to match profile card */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow to lift the card */
+    max-width: 600px; /* Align with profile card width */
+    width: 90%; /* Responsive width */
+}
+
+/* Contacts Card Header */
+#contacts-card h2 {
+    margin-bottom: 15px; /* Space below header */
+    color: #333; /* Dark text for contrast */
+    font-size: 22px; /* Slightly smaller than profile card headers */
+}
+
+/* Contacts Table Styling */
+.contacts-table {
+    width: 100%; /* Full width within the card */
+    border-collapse: collapse; /* Remove space between cells */
+    margin-top: 10px; /* Space above the table */
+}
+
+.contacts-table th, .contacts-table td {
+    border: 1px solid #e0e0e0; /* Light gray border for table cells */
+    padding: 10px; /* Padding inside table cells */
+    text-align: left; /* Left-align text for readability */
+    font-size: 14px; /* Smaller font size for table text */
+    color: #555; /* Slightly lighter color for text */
+}
+
+.contacts-table th {
+    background-color: #f4f4f4; /* Light gray background for header row */
+    font-weight: bold; /* Bold text for headers */
+    color: #333; /* Darker color for header text */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #profile-card,
+    #contacts-card {
+        padding: 15px; /* Reduce padding on smaller screens */
+    }
+
+    .contacts-table th, .contacts-table td {
+        padding: 8px; /* Reduce padding for table cells on smaller screens */
+        font-size: 12px; /* Smaller font size for table text */
+    }
+}
+

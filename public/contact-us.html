@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="./css/styles.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="./css/contact-us.css"> <!-- Link to your CSS file -->
+    <script src="https://kit.fontawesome.com/792066fd94.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- Navbar -->
+<header>
+    <nav>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="inventory.html">Inventory</a>
+            <a href="contact-us.html">Contact</a>
+        </div>
+        <div id="profile-container">
+            <a href="/profile" id="profile-link">
+                <i id="profile-icon" class="fas fa-user-circle"></i>
+            </a>
+        </div>
+    </nav>
+</header>
+
+<!-- Main Content -->
+<main>
+    <div class="contact-page-container">
+        <div class="phone-notice">
+            <p>If you prefer, you can also reach us by phone at <strong><a href="tel:+6195733865">+1 (619) 573-3865</a></strong></p>
+        </div>
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <h2>Get in Touch</h2>
+            <p>We'd love to hear from you! Please fill out the form below and we will get back to you as soon as possible.</p>
+
+            <form id="contact-form" action="#" method="post" onsubmit="submitContactForm(event)">
+                <!-- Service Selection Dropdown -->
+                <div class="form-group">
+                    <label for="service">Select a Service:</label>
+                    <select id="service" name="service" class="form-control">
+                        <option value="car-sales">Car Sales</option>
+                        <option value="car-restoration">Car Restoration</option>
+                        <option value="worldwide-shipping">Worldwide Shipping</option>
+                        <option value="financing-options">Financing Options</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Name Input -->
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
+                </div>
+
+                <!-- Email Input -->
+                <div class="form-group">
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+
+                <!-- Message Textarea -->
+                <div class="form-group">
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" name="message" class="form-control" placeholder="Enter your message" rows="5" required></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <button type="submit" class="btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="./scripts/contact-us.js"></script>
+</main>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 Daygo Classics All rights reserved.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,53 @@
+main {
+    padding: 20px;
+}
+
+h2.title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 60px; /* Margin at the bottom for spacing */
+}
+
+.card, .add-card {
+    width: 300px; /* Standardized width */
+    height: 280px; /* Standardized height */
+    border-radius: 5px; /* Rounded corners for the card */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for transform and box-shadow */
+    overflow: hidden; /* Ensures content does not overflow */
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensure content and buttons are spaced out */
+    align-items: center; /* Center content horizontally */
+    cursor: pointer;
+    padding: 0px; /* Padding for content inside the card */
+    text-align: center;
+}
+
+.card:hover {
+    transform: scale(1.05); /* Grow the card slightly on hover */
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3); /* Increase shadow on hover */
+}
+
+.card img {
+    width: 100%;
+    height: 150px; /* Fixed height for images */
+    object-fit: cover; /* Ensures images cover their area without distortion */
+    border-radius: 0px 0px 0 0; /* Rounded corners on the top of the image */
+}
+
+.card-content {
+    padding: 10px;
+    flex-grow: 1; /* Allow content to grow to fill space */
+    text-align: center;
+}

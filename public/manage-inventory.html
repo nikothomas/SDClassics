@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/manage-inventory-styles.css">
+    <script src="https://kit.fontawesome.com/792066fd94.js" crossorigin="anonymous"></script>
+    <title>Manage Inventory - SD Classics</title>
+</head>
+<body>
+<!-- Navbar -->
+<header>
+    <nav>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="inventory.html">Inventory</a>
+            <a href="contact-us.html">Contact</a>
+        </div>
+        <div id="profile-container">
+            <a href="/profile" id="profile-link">
+                <i id="profile-icon" class="fas fa-user-circle"></i>
+            </a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section id="inventory-management">
+        <!-- Manage Inventory Title -->
+        <h2 class="title">Manage Inventory</h2>
+
+        <!-- Feedback Message -->
+        <div id="feedback-message" class="feedback-message"></div>
+
+        <!-- Inventory Cards Container -->
+        <div id="current-inventory" class="card-container">
+            <div class="add-card" onclick="showAddCarOverlay()">
+                <div class="add-card-content">
+                    <i class="fas fa-plus-circle fa-3x"></i>
+                    <p>Add New Car</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Add Car Overlay -->
+<div id="add-car-overlay" class="overlay">
+    <div class="card large-card">
+        <form id="add-car-form" enctype="multipart/form-data">
+            <h2>Add a New Car</h2>
+            <input type="text" name="make" placeholder="Make" required>
+            <input type="text" name="model" placeholder="Model" required>
+            <input type="text" name="vin" placeholder="VIN" required>
+            <textarea name="description" placeholder="Description" required></textarea>
+            <input type="number" name="miles" placeholder="Miles" required>
+            <input type="number" step="0.01" name="price" placeholder="Price" required>
+            <input type="text" name="engine" placeholder="Engine" required>
+            <input type="text" name="transmission" placeholder="Transmission" required>
+            <input type="text" name="drivetrain" placeholder="Drivetrain" required>
+            <input type="text" name="suspension" placeholder="Suspension" required>
+            <input type="text" name="interior" placeholder="Interior" required>
+            <input type="number" name="year" placeholder="Year" required>
+            <input type="text" name="color" placeholder="Color" required>
+            <input type="file" name="image" accept="image/*" required>
+            <button type="submit" class="button">Add Car</button>
+            <button type="button" class="button cancel-button" onclick="hideAddCarOverlay()">Cancel</button>
+        </form>
+    </div>
+</div>
+
+<!-- Edit Car Overlay -->
+<div id="edit-car-overlay" class="overlay">
+    <div class="card large-card">
+        <form id="edit-car-form" onsubmit="submitEditCar(); return false;">
+            <h2>Edit Car</h2>
+            <input type="hidden" id="edit-car-id">
+            <input type="text" name="edit-make" placeholder="Make" required>
+            <input type="text" name="edit-model" placeholder="Model" required>
+            <input type="text" name="edit-vin" placeholder="VIN" required>
+            <textarea id="edit-description" placeholder="Description" required></textarea>
+            <input type="number" id="edit-miles" placeholder="Miles" required>
+            <input type="number" step="0.01" id="edit-price" placeholder="Price" required>
+            <input type="text" id="edit-engine" placeholder="Engine" required>
+            <input type="text" id="edit-transmission" placeholder="Transmission" required>
+            <input type="text" name="edit-drivetrain" placeholder="Drivetrain" required>
+            <input type="text" name="edit-suspension" placeholder="Suspension" required>
+            <input type="text" name="edit-interior" placeholder="Interior" required>
+            <input type="number" id="edit-year" placeholder="Year" required>
+            <input type="text" id="edit-color" placeholder="Color" required>
+            <button type="submit" class="button">Save Changes</button>
+            <button type="button" class="button cancel-button" onclick="hideEditCarOverlay()">Cancel</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Daygo Classics. All rights reserved.</p>
+</footer>
+
+<script src="./scripts/manage-inventory.js"></script>
+</body>
+</html>
