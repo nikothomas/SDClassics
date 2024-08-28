@@ -84,25 +84,25 @@
     <div class="card large-card">
         <form id="edit-car-form">
             <h2>Edit Car</h2>
-            <input type="hidden" id="edit-car-id">
-            <input type="text" id="edit-make" name="edit-make" placeholder="Make" required>
-            <input type="text" id="edit-model" name="edit-model" placeholder="Model" required>
-            <input type="text" id="vin" name="edit-vin" placeholder="VIN" required>
-            <textarea id="edit-description" placeholder="Description" required></textarea>
-            <input type="number" id="edit-miles" placeholder="Miles" required>
-            <input type="number" step="0.01" id="edit-price" placeholder="Price" required>
-            <input type="text" id="edit-engine" placeholder="Engine" required>
-            <input type="text" id="edit-transmission" placeholder="Transmission" required>
-            <input type="text" id="edit-drivetrain" placeholder="Drivetrain" required>
-            <input type="text" id="edit-suspension" placeholder="Suspension" required>
-            <input type="text" id="edit-interior" placeholder="Interior" required>
-            <input type="number" id="edit-year" placeholder="Year" required>
-            <input type="text" id="edit-color" placeholder="Color" required>
+            <input type="hidden" id="edit-car-id" name="vin">
+            <input type="text" id="edit-make" name="make" placeholder="Make" required>
+            <input type="text" id="edit-model" name="model" placeholder="Model" required>
+            <textarea id="edit-description" name="description" placeholder="Description" required></textarea>
+            <input type="number" id="edit-miles" name="miles" placeholder="Miles" required>
+            <input type="number" step="0.01" id="edit-price" name="price" placeholder="Price" required>
+            <input type="text" id="edit-engine" name="engine" placeholder="Engine" required>
+            <input type="text" id="edit-transmission" name="transmission" placeholder="Transmission" required>
+            <input type="text" id="edit-drivetrain" name="drivetrain" placeholder="Drivetrain" required>
+            <input type="text" id="edit-suspension" name="suspension" placeholder="Suspension" required>
+            <input type="text" id="edit-interior" name="interior" placeholder="Interior" required>
+            <input type="number" id="edit-year" name="year" placeholder="Year" required>
+            <input type="text" id="edit-color" name="color" placeholder="Color" required>
             <button type="submit" class="button">Save Changes</button>
             <button type="button" class="button cancel-button" onclick="hideEditCarOverlay()">Cancel</button>
         </form>
     </div>
 </div>
+
 
 <script src="./scripts/navbar.js"></script>
 <footer>

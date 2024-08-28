@@ -199,26 +199,44 @@ app.post('/api/cars', requiresAuth(), upload.single('image'), async (req, res) =
 });
 
 
-// Endpoint to update a car by VIN
 app.put('/api/cars/:vin', requiresAuth(), async (req, res) => {
-    const carVin = req.params.vin; // VIN is a string, so no need to parse
-    const {
-        make,
-        model,
-        description,
-        miles,
-        price,
-        engine,
-        transmission,
-        drivetrain,
-        suspension,
-        interior,
-        year,
-        color
-    } = req.body;
+    const carVin = req.params.vin; // Extract VIN from request parameters
+
+    // Explicitly set each variable from the request body
+    const make = req.body.make;
+    const model = req.body.model;
+    const description = req.body.description;
+    const miles = req.body.miles;
+    const price = req.body.price;
+    const engine = req.body.engine;
+    const transmission = req.body.transmission;
+    const drivetrain = req.body.drivetrain;
+    const suspension = req.body.suspension;
+    const interior = req.body.interior;
+    const year = req.body.year;
+    const color = req.body.color;
+
+    console.log(req)
+
+    // Basic input validation (expand as needed)
+    if (!make || !model || !year || !carVin) {
+        return res.status(400).json({ error: 'Make, model, year, and VIN are required fields.' });
+    }
 
     try {
-        const { error } = await supabase
+        // Check if the car exists in the database
+        const { data: existingCar, error: fetchError } = await supabase
+            .from('active_inventory')
+            .select('vin')
+            .eq('vin', carVin)
+            .single();
+
+        if (fetchError || !existingCar) {
+            return res.status(404).json({ error: 'Car not found.' });
+        }
+
+        // Perform the update operation in the database
+        const { data, error } = await supabase
             .from('active_inventory')
             .update({
                 make,
@@ -238,12 +256,14 @@ app.put('/api/cars/:vin', requiresAuth(), async (req, res) => {
 
         if (error) throw error;
 
-        res.status(200).json({ message: 'Car updated successfully.' });
+        res.status(200).json({ message: 'Car updated successfully.', updatedCar: data });
+
     } catch (err) {
-        console.error(err);
+        console.error('Error updating car:', err);
         res.status(500).json({ error: 'Failed to update car' });
     }
 });
+
 
 // Endpoint to delete a car by VIN
 app.delete('/api/cars/:vin', requiresAuth(), async (req, res) => {
@@ -369,7 +389,6 @@ app.post('/api/contact', [
         res.status(500).json({ error: 'Failed to save contact information.' });
     }
 });
-
 
 // Define other routes
 app.get('/', (req, res) => {
