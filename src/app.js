@@ -48,8 +48,10 @@ const requireAuth = requiresAuth();
 
 // Hardcoded admin check using environment variable
 app.get('/auth/check-admin', requiresAuth(), (req, res) => {
-    const adminUserId = process.env.ADMIN_USER_ID;
-    if (req.oidc.user && req.oidc.user.sub === adminUserId) {
+    const adminUserIds = process.env.ADMIN_USER_IDS.split(',').map(id => id.trim());
+    const userId = req.oidc.user.sub;
+    // Check if the user ID is in the list of admin IDs
+    if (userId && adminUserIds.includes(userId)) {
         res.json({ isAdmin: true });
     } else {
         res.json({ isAdmin: false });
