@@ -131,7 +131,31 @@ app.post('/api/cars', requiresAuth(), upload.single('image'), async (req, res) =
     let imageUrl = null;
 
     try {
-        // Insert car data into the database first, without the image URL
+        // Handle image upload if a file was provided
+        if (req.file) {
+            const file = req.file;
+            const fileExt = path.extname(file.originalname);
+            const fileName = `${Date.now()}${fileExt}`;
+
+            // Upload image to Supabase storage
+            const { data: uploadData, error: uploadError } = await supabase.storage
+                .from('car-images')
+                .upload(`public/${fileName}`, file.buffer, {
+                    contentType: file.mimetype,
+                });
+
+            if (uploadError) throw uploadError;
+
+            // Get the public URL for the uploaded image
+            const { data: publicUrlData } = supabase
+                .storage
+                .from('car-images')
+                .getPublicUrl(`public/${fileName}`);
+
+            imageUrl = publicUrlData.publicUrl;
+        }
+
+        // Insert car data into the database
         let { data, error } = await supabase
             .from('active_inventory')
             .insert([
@@ -149,49 +173,12 @@ app.post('/api/cars', requiresAuth(), upload.single('image'), async (req, res) =
                     interior,
                     year,
                     color,
-                    image_url: null, // Initially set to null
+                    image_url: imageUrl,
                 },
             ])
             .select();
 
-        // Check for errors in database insertion
-        if (error) {
-            console.error('Error inserting data:', error);
-            throw error;
-        }
-
-        // If data insertion is successful and there is an image file, upload the image
-        if (data && req.file) {
-            // Upload image to Supabase storage
-            const { data: uploadData, error: uploadError } = await supabase.storage
-                .from('car-images')
-                .upload(`public/${req.file.originalname}`, req.file.buffer, {
-                    cacheControl: '3600',
-                    upsert: false,
-                    contentType: req.file.mimetype,
-                });
-
-            if (uploadError) throw uploadError;
-
-            // Get the public URL for the uploaded image
-            const { data: publicUrlData } = supabase
-                .storage
-                .from('car-images')
-                .getPublicUrl(`public/${req.file.originalname}`);
-
-            imageUrl = publicUrlData.publicUrl;
-
-            // Update the car record with the image URL after successful image upload
-            const { error: updateError } = await supabase
-                .from('active_inventory')
-                .update({ image_url: imageUrl })
-                .eq('vin', vin);
-
-            if (updateError) {
-                console.error('Error updating image URL:', updateError);
-                throw updateError;
-            }
-        }
+        if (error) throw error;
 
         res.status(201).json(data[0]); // Return the inserted car data
     } catch (err) {
@@ -199,7 +186,6 @@ app.post('/api/cars', requiresAuth(), upload.single('image'), async (req, res) =
         res.status(500).json({ error: 'Failed to add car' });
     }
 });
-
 
 app.put('/api/cars/:vin', requiresAuth(), async (req, res) => {
     const carVin = req.params.vin; // Extract VIN from request parameters

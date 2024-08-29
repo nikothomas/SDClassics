@@ -7,20 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleFormSubmission = async (event, url, method, successMessage, hideOverlayCallback) => {
         event.preventDefault();
 
-        // Convert form data to JSON format
+        // Use FormData to handle file uploads
         const formData = new FormData(event.target);
-        const data = {};
-        formData.forEach((value, key) => {
-            data[key] = value;
-        });
 
         try {
             const response = await fetch(url, {
                 method: method,
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data),
+                body: formData, // Send FormData directly
             });
 
             const responseData = await response.json();
